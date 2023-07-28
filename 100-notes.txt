@@ -1,0 +1,17 @@
+for connecting the backend to frontend 
+1. first create a proxy in package.json file in frontend folder like this
+    "name": "frontend",
+    "version": "0.1.0",
+     "private": true,
+     "proxy": "http://127.0.0.1:2001",  
+
+2. Then wherever you want to fetch the data then you are going to use two things
+    1. axios - it is used to fetch api keys.
+    2. useEffect - it will render everyhing first when page will load up.
+
+
+3. Create Models and making schema in it. we will be using mongoose in it.
+
+4. create models for different models.
+
+5. JWT = json web token.  This is helps us in authroization of the user. It sends the unique token to backend for getting the data of the partiular user.

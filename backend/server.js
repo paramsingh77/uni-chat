@@ -2,6 +2,10 @@ const epxress = require("express");
 const { chats } = require("./data/data.js");
 const app = epxress();
 const path = require("path");
+const connectDB = require("./config/db.js");
+const colors = require("colors");
+const userRoutes = require("./routes/userRoutes.js");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 //getting port from environment variable
 
 require("dotenv").config({
@@ -10,15 +14,15 @@ require("dotenv").config({
 
 //Creating API's
 
+connectDB();
+
+app.use(epxress.json());
+
 app.get("/", (req, res) => {
     res.send("API is running");
 });
 
-app.get('/api/chats', (req, res) => {
-    
-    res.send(chats);
-})
-
+app.use('/api/user',userRoutes)
 
 //in this api we are trying to fetch the single chat id for a particular chat.
 app.get('/api/chats/:id', (req, res) => {
@@ -28,8 +32,11 @@ app.get('/api/chats/:id', (req, res) => {
     res.send(singleChatId);
 })
 
+app.use(notFound);
+app.use(errorHandler);
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Server is running at ${PORT}`)
+    console.log(`Server is running at ${PORT}`.yellow.bold)
 });

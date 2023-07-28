@@ -1,0 +1,9 @@
+@import url('https://fonts.cdnfonts.com/css/sanfford');
+@import url('https://fonts.cdnfonts.com/css/beliau');
+.App{
+    min-height: 100vh;
+    display: flex;
+    background-position: center;
+    /* background-color: ; */
+    color: black;
+}
