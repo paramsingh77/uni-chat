@@ -5,6 +5,7 @@ const path = require("path");
 const connectDB = require("./config/db.js");
 const colors = require("colors");
 const userRoutes = require("./routes/userRoutes.js");
+const chatRoutes = require("./routes/chatRoutes.js");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 //getting port from environment variable
 
@@ -22,7 +23,8 @@ app.get("/", (req, res) => {
     res.send("API is running");
 });
 
-app.use('/api/user',userRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/chat', chatRoutes);
 
 //in this api we are trying to fetch the single chat id for a particular chat.
 app.get('/api/chats/:id', (req, res) => {
