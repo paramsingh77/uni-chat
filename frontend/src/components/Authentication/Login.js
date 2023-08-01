@@ -7,22 +7,20 @@ import {
 	InputGroup,
 	InputRightElement,
 	Button,
-	Show,
 	useToast,
 } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 const Login = () => {
 
 	
 	const [show, setShow] = useState(false);
-	const [name, setName] = useState();
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const [loading, setLoading] = useState(false);
 	const handleClick = () => setShow(!show);
 	const toast = useToast();
-	const history = useHistory;
+	const history = useHistory();
 
 
 
@@ -97,7 +95,6 @@ const Login = () => {
 							onChange={(e) => {
 								setPassword(e.target.value);
 							}}
-							value={password}
 						/>
 						<InputRightElement width="4.5rem">
 							<Button h="1.75rem" size="sm" onClick={handleClick}>
