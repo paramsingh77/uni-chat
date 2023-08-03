@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ChatState } from "../Context/ChatProvider";
-import { Avatar, Box, Button, Image, MenuDivider, Stack, Text, useToast } from "@chakra-ui/react";
+import { Avatar, Box, Button, Stack, Text, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { AddIcon } from "@chakra-ui/icons";
 import ChatLoading from "./ChatLoading";
 import { getSender } from "../config/ChatLogics";
-const MyChats = () => {
+import GroupChatModal from "./Authentication/miscellaneous/GroupChatModal";
+const MyChats = ({fetchAgain}) => {
 	const [loggedUser, setLoggedUser] = useState();
 	const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
 	const toast = useToast();
-    {chats.map((chat)=> console.log('thi is ',chat.users[1].pic))}
+
 	const fetchChats = async () => {
 		try {
 			const config = {
@@ -37,7 +38,9 @@ const MyChats = () => {
 	useEffect(() => {
 		setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
 		fetchChats();
-	},[]);
+	}, [fetchAgain]);
+
+
 	return (
 		<Box
 			display={{ base: selectedChat ? "none" : "flex", md: "flex" }}
@@ -55,17 +58,20 @@ const MyChats = () => {
 				fontSize={{ base: "28px", md: "30px" }}
 				display={"flex"}
 				w={"100%"}
+				h={'150px'}
 				justifyContent={"space-between"}
 				alignItems={"center"}
 			>
 				My Chats
-				<Button
-					display="flex"
-					fontSize={{ base: "17px", md: "10px", lg: "10px" }}
-					rightIcon={<AddIcon />}
-				>
-					New Group Chat
-				</Button>
+				<GroupChatModal>
+					<Button
+						display="flex"
+						fontSize={{ base: "17px", md: "10px", lg: "10px" }}
+						rightIcon={<AddIcon />}
+					>
+						New Group Chat
+					</Button>
+				</GroupChatModal>
 			</Box>
 			<Box
 				display={"flex"}
@@ -73,7 +79,7 @@ const MyChats = () => {
 				p={3}
 				bg={"#F8F8F8"}
 				w={"100%"}
-				h={"100%"}
+				h="100%"
 				borderRadius={"lg"}
 				overflowY={"hidden"}
 			>

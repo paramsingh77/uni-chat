@@ -116,7 +116,7 @@ const SideDrawer = () => {
 				w="100%"
 				p="5px 10px 5px 10px"
 				fontFamily=""
-				borderWidth="5px"
+				borderWidth="2px"
 			>
 				<Tooltip label="Search Users to Chat" hasArrow placement="bottom-end">
 					<Button variant="ghost" onClick={onOpen}>
@@ -130,7 +130,7 @@ const SideDrawer = () => {
 						</Text>
 					</Button>
 				</Tooltip>
-				<Text fontSize="2xl" fontFamily="Pacifico" color="gold">
+				<Text fontSize="2xl" fontFamily="Pacifico" color="black">
 					UNA-CHAT
 				</Text>
 				<div>

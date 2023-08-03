@@ -1,6 +1,5 @@
 import { ViewIcon } from "@chakra-ui/icons";
 import { Button, IconButton, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure ,Text} from "@chakra-ui/react";
-import { color } from "framer-motion";
 import React from "react";
 
 const ProfileModal = ({ user, children }) => {

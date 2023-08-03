@@ -111,7 +111,7 @@ const Login = () => {
 					onClick={submitHandler}
 					isLoading={loading}
 				>
-					Sign up
+					Sign In
 				</Button>
 				<Button
 					colorScheme="purple"
